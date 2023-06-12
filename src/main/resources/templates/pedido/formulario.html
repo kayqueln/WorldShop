@@ -1,0 +1,39 @@
+<!DOCTYPE html>
+<html xmlns:th="http://www.w3.org/1999/xhtml">
+
+<head th:replace="~{base :: head}"></head>
+
+<body>
+<div th:replace="~{base :: header}"></div>
+
+  <div class="container">
+    <div th:replace="~{base :: titulo('Novo Pedido')}"></div>
+
+    <div class="card mt-3">
+      <form th:object="${requisicaoNovoPedido}" class="card-body" action="/pedido/novo" method="post">
+        <div class="form-group">
+          <label for="nomeProduto">Produto</label>
+          <input th:field="*{nomeProduto}" th:errorclass="is-invalid" class="form-control" id="nomeProduto" placeholder="Nome do produto:">
+          <div class="invalid-feedback" th:errors="*{nomeProduto}">Erros do nome do produto </div>
+        </div>
+        <div class="form-group  mt-3">
+          <label for="urlProduto">Url</label>
+          <input th:field="*{urlProduto}" th:errorclass="is-invalid" class="form-control" id="urlProduto" placeholder="url do produto:">
+          <div class="invalid-feedback" th:errors="*{urlProduto}">Erros da url do produto</div>
+        </div>
+        <div class="form-group  mt-3">
+          <label for="urlImagem">Imagem</label>
+          <input th:field="*{urlImagem}" th:errorclass="is-invalid" class="form-control" id="urlImagem" placeholder="url da imagem:">
+          <div class="invalid-feedback" th:errors="*{urlImagem}">Erros da url da imagem</div>
+        </div>
+        <div class="form-group mt-3">
+          <label for="descricao">Descrição</label>
+          <textarea th:field="*{descricao}" class="form-control" id="descricao" placeholder="Adicione detalhes importantes para ajudar o comprador:"></textarea>
+        </div>
+        <button type="submit" class="btn btn-primary mt-3">Cadastrar</button>
+      </form>
+    </div>
+  </div>
+
+</body>
+</html>
